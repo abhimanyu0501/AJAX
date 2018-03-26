@@ -1,0 +1,30 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+	<meta charset="utf-8" />
+</head>
+<body>
+<div id="demo">
+<h2>The XMLHttpRequest Object</h2>
+<button type="button" onclick="loadDoc()">Change Content</button>
+</div>
+<script>
+    function loadDoc()
+    {
+        var xhttp = new XMLHttpRequest();
+        xhttp.onreadystatechange = function () {
+//status - returns the status-number of request 200 - ok, 403- forbidden, 404- not found
+            if (this.readyState == 4 && this.status == 200) {
+//responseText - Returns the response data as a string.
+                document.getElementById("demo").innerHTML = this.responseText;
+            }
+        };
+//open(method,url,async,user,psw) - Specifies the request method: the request type get or post, url: the file location,async: true(asynchronous) or false (synchronous), user: optional user name, psw: optional password
+        xhttp.open("GET", "ajax_info.txt", true);
+//send() - sends the request to the server Used for get request.
+        xhttp.send();
+    }
+</script>
+</body>
+</html>
